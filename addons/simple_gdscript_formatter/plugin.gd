@@ -92,5 +92,6 @@ func _shortcut_input(event: InputEvent) -> void:
 	#Open in External Editor- uses ProjectSettings to enable or disable feature.
 	if ProjectSettings.get_setting(OPEN_EXTERNAL_ACTION, true):
 		if Input.is_action_pressed(OPEN_EXTERNAL_ACTION):
-			_open_external()
-			get_tree().root.set_input_as_handled()
+			if event is InputEventKey and event.get_keycode_with_modifiers() == Key.KEY_E | KeyModifierMask.KEY_MASK_CTRL:
+        		_open_external()
+        		get_tree().root.set_input_as_handled()
